@@ -6,6 +6,8 @@
 	<artifactId>ip-geolocator</artifactId>
 	<version>1.0</version>
 	<description>Java class library for obtaining geolocation information of an IP address.</description>
+	
+	
 	<developers>
 		<developer>
 			<id>Tan</id>
@@ -15,6 +17,9 @@
 			<organizationUrl>http://www.inf.unideb.hu/</organizationUrl>
 		</developer>
 	</developers>
+	
+	
+	
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.outputEncoding>UTF-8</project.build.outputEncoding>
@@ -105,11 +110,23 @@
 					</execution>
 				</executions>
 			</plugin>
+		
+			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-site-plugin</artifactId>
 				<version>3.9.1</version>
+			  <dependencies>
+			    <dependency>
+			      <groupId>org.apache.maven.wagon</groupId>
+			      <artifactId>wagon-ssh</artifactId>
+			      <version>3.4.2</version>
+			    </dependency>
+			  </dependencies>
 			</plugin>
+			
+
+			
 		</plugins>
 	</build>
 	<reporting>
@@ -121,4 +138,10 @@
 			</plugin>
 		</plugins>
 	</reporting>
+	<distributionManagement>
+		  <site>
+		    <id>shrek</id>
+		    <url>scp://@shrek.unideb.hu:2222/home/yorha/public_html/${project.artifactId}</url>
+		  </site>
+		</distributionManagement>
 </project>
